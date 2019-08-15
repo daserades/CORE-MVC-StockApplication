@@ -2,7 +2,7 @@
 
 namespace CORE_MVC_STOK.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace CORE_MVC_STOK.Migrations
                 {
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    nvarchar50 = table.Column<string>(name: "nvarchar(50)", nullable: true)
+                    CategoryName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +25,8 @@ namespace CORE_MVC_STOK.Migrations
                 {
                     CustomerId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    nvarchar50 = table.Column<string>(name: "nvarchar(50)", nullable: true)
+                    CustomerName = table.Column<string>(nullable: true),
+                    CustomerSurname = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,7 +39,8 @@ namespace CORE_MVC_STOK.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    nvarchar50 = table.Column<string>(name: "nvarchar(50)", nullable: true),
+                    ProductName = table.Column<string>(nullable: true),
+                    ProductBrand = table.Column<string>(nullable: true),
                     ProductPrice = table.Column<decimal>(nullable: false),
                     ProductStock = table.Column<int>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)

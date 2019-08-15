@@ -21,7 +21,7 @@ namespace CORE_MVC_STOK.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CategoryName")
-                        .HasColumnName("nvarchar(50)");
+                        .IsRequired();
 
                     b.HasKey("CategoryId");
 
@@ -33,11 +33,9 @@ namespace CORE_MVC_STOK.Migrations
                     b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CustomerName")
-                        .HasColumnName("nvarchar(50)");
+                    b.Property<string>("CustomerName");
 
-                    b.Property<string>("CustomerSurname")
-                        .HasColumnName("nvarchar(50)");
+                    b.Property<string>("CustomerSurname");
 
                     b.HasKey("CustomerId");
 
@@ -51,11 +49,9 @@ namespace CORE_MVC_STOK.Migrations
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("ProductBrand")
-                        .HasColumnName("nvarchar(50)");
+                    b.Property<string>("ProductBrand");
 
-                    b.Property<string>("ProductName")
-                        .HasColumnName("nvarchar(50)");
+                    b.Property<string>("ProductName");
 
                     b.Property<decimal>("ProductPrice");
 

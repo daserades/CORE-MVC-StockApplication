@@ -1,0 +1,34 @@
+﻿@model CORE_MVC_STOK.Models.Category
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<h2>Güncelleme Sayfası</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <input asp-for="CategoryId" class="form-control" readonly="readonly" />
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-warning" />
+
+                <a asp-action="Index" class="btn btn-danger">Vazgeç</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

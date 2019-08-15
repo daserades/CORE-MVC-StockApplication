@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CORE_MVC_STOK.Models.Category>
+
+@{
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="form-group" style="margin-top:15px">
+    <label class="form-control" style="color:red">@TempData["Warning"]</label>
+</div>
+<table class="table table-bordered" id="indexTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                SİL
+            </th>
+            <th>
+                GÜNCELLE
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Sil", "Delete", new { id = item.CategoryId }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor musunuz ?')" })
+                </td>
+                <td>
+                    <a href="/Category/Update/@item.CategoryId" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">Yeni Kategori Ekle</a>
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#indexTable').DataTable();
+</script>

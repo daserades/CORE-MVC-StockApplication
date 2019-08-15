@@ -1,0 +1,24 @@
+﻿@model CORE_MVC_STOK.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" placeholder="Buraya Kategori Adını yazınız." />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kategori Ekle" class="btn btn-info" />
+                <a asp-action="Index" class="btn btn-danger">Vazgeç</a>
+            </div>
+        </form>
+    </div>
+</div>
+

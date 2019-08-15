@@ -15,9 +15,7 @@ namespace CORE_MVC_STOK.Models
         }
         [Key]
         public int ProductId { get; set; }
-        [Column("nvarchar(50)")]
         public string ProductName { get; set; }
-        [Column("nvarchar(50)")]
         public string ProductBrand { get; set; }
         public decimal ProductPrice { get; set; }
         public int ProductStock { get; set; }

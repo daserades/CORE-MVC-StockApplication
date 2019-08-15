@@ -14,10 +14,13 @@ namespace CORE_MVC_STOK.Models
             Sales = new HashSet<Sales>();
         }
         [Key]
+        [Display(Name ="Müşteri ID")]
         public int CustomerId { get; set; }
-        [Column("nvarchar(50)")]
+        [Display(Name ="Müşteri Ad")]
+        [Required(ErrorMessage ="Müşteri adı boş bırakılamaz !")]
         public string CustomerName { get; set; }
-        [Column("nvarchar(50)")]
+        [Display(Name ="Müşteri Soyad")]
+        [Required(ErrorMessage = "Müşteri soyadı boş bırakılamaz !")]
         public string CustomerSurname { get; set; }
         public virtual ICollection<Sales> Sales { get; set; }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CORE_MVC_STOK.Data.Context;
+using CORE_MVC_STOK.DataAccess.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,9 @@ namespace CORE_MVC_STOK
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Bağlantıyı projeye ekleyen kod.Contextimiz ile veri tabanını bağlar.
+            services.AddDbContext<MasterContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -40,8 +44,8 @@ namespace CORE_MVC_STOK
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
-            //Bağlantıyı projeye ekleyen kod.Contextimiz ile veri tabanını bağlar.
-            services.AddDbContext<MasterContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+        
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
