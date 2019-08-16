@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +107,23 @@ namespace CORE_MVC_STOK.DataAccess.Repository
         public void Update(T entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+
+        public IQueryable<T> Include(params Expression<Func<T, object>>[] includes)
+        {
+            IIncludableQueryable<T, object> query = null;
+
+            if (includes.Length > 0)
+            {
+                query = dbSet.Include(includes[0]);
+            }
+            for (int queryIndex = 1; queryIndex < includes.Length; ++queryIndex)
+            {
+                query = query.Include(includes[queryIndex]);
+            }
+
+            return query == null ? dbSet : (IQueryable<T>)query;
         }
         #endregion
     }

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $('#aboutModal').modal('show');
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLongTitle">Core MVC Projesi</h5>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Bu proje Salih ÇAKMAK tarafından geliştirilmiştir.
+                    Eğitim amaçlı temel crud işlemleri baz alınmıştır.
+                    Validation kontrolleri ,Paging ,Modal ,Search işlemleri kullanılmıştır.
+                    Veri tabanı MySQL.Veri tabanı işlemleri
+                    Entity Framework Core ile migration işlemi yaparak.Model klasöründeki modeller üzerinden yapılmıştır.
+                    Repository pattern ve Unit Of Work Kullanılmıştır.
+                    <br />
+                    <br />
+                    ~ Tarih 18 Ağustos 2019 - Salih ÇAKMAK
+                </p>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+

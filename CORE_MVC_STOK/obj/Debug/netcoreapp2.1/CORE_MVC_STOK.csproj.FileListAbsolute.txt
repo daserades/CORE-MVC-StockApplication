@@ -37,3 +37,10 @@ C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\
 C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Customer\Index.g.cshtml.cs
 C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Customer\Create.g.cshtml.cs
 C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Customer\Update.g.cshtml.cs
+C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Product\Create.g.cshtml.cs
+C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Product\Index.g.cshtml.cs
+C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Product\Update.g.cshtml.cs
+C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Sales\Index.g.cshtml.cs
+C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Sales\Create.g.cshtml.cs
+C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\Sales\Update.g.cshtml.cs
+C:\Users\sacak\Source\Repos\CORE_MVC_STOK\CORE_MVC_STOK\obj\Debug\netcoreapp2.1\Razor\Views\About\Index.g.cshtml.cs

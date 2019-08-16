@@ -90,6 +90,11 @@ namespace CORE_MVC_STOK.Controllers
             }
         }
 
+        /// <summary>
+        /// Müşteri bilgilerini güncelleme sayfasını açan action.
+        /// </summary>
+        /// <param name="id">Güncellenecek müşteri id'si.</param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -100,6 +105,11 @@ namespace CORE_MVC_STOK.Controllers
             }
         }
 
+        /// <summary>
+        /// Müşterinin güncellenen bilgilerini veri tabanına kaydeden action.
+        /// </summary>
+        /// <param name="updateCustomer">Güncellenen müşteri modeli.</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Update(Customer updateCustomer)
         {

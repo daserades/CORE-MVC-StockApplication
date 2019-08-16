@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CORE_MVC_STOK.Models.Sales>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-bottom:15px">
+    @Html.ActionLink("Satış Yap", "Create", new { }, new { @class = "btn btn-warning btn-lg" })
+</div>
+
+<table class="table table-bordered" id="indexTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SaleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Piece)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                SİL
+            </th>
+            <th>
+                GÜNCELLE
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.SaleId)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Piece)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CustomerName) 
+                    @Html.DisplayFor(modelItem => item.Customer.CustomerSurname)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.ActionLink("Sil", "Delete", new { id = item.SaleId }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz ?')" })
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "Update", new { id = item.SaleId }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#indexTable').DataTable();
+</script>

@@ -49,5 +49,6 @@ namespace CORE_MVC_STOK.DataAccess.Repository
         /// </summary>
         /// <param name="entity"></param>
         void Delete(T entity);
+        IQueryable<T> Include(params Expression<Func<T, object>>[] includes);
     }
 }
