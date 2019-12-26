@@ -6,6 +6,7 @@ using CORE_MVC_STOK.Data.Context;
 using CORE_MVC_STOK.DataAccess.UnitOfWork;
 using CORE_MVC_STOK.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CORE_MVC_STOK.Controllers
 {
@@ -45,6 +46,13 @@ namespace CORE_MVC_STOK.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            List<SelectListItem> getCategory = (from x in _masterContext.Categories.ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = x.CategoryName,
+                                                    Value = x.CategoryId.ToString()
+                                                }).ToList();
+            ViewBag.categoryList = getCategory;
             return View();
         }
 
@@ -56,16 +64,16 @@ namespace CORE_MVC_STOK.Controllers
         [HttpPost]
         public IActionResult Create(Customer newCustomer)
         {
-            if (ModelState.IsValid)
-            {
+            
                 using (UnitOfWork uow =new UnitOfWork (_masterContext))
                 {
+                    var category = uow.GetRepository<Category>().Get(x => x.CategoryId == newCustomer.Category.CategoryId);
+                    newCustomer.Category = category;
                     uow.GetRepository<Customer>().Create(newCustomer);
                     uow.SaveChanges();
                     return RedirectToAction("Index");
                 }
-            }
-            return View(newCustomer);
+            
         }
 
         /// <summary>
@@ -124,6 +132,34 @@ namespace CORE_MVC_STOK.Controllers
             }
             return View(updateCustomer);
         }
+
+
+        public IActionResult test()
+        {
+
+            using (UnitOfWork uow = new UnitOfWork(_masterContext))
+            {
+               
+                var category = uow.GetRepository<Category>().Include(x=>x.Customer).ToList();
+                int [] categoryList = category.Select(x => x.CategoryId).Distinct().ToArray();
+                var products = uow.GetRepository<Product>().GetAll(x => categoryList.Contains(x.CategoryId)).ToList();
+              
+                List<CustomerDto> xxx = new List<CustomerDto>();
+
+                foreach (var bp00 in category)
+                {
+                    xxx.Add(new CustomerDto(bp00));
+
+                }
+
+            }
+
+
+            return RedirectToAction("Index");
+        }
+
+
+
         #endregion
     }
 }

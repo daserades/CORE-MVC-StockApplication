@@ -23,6 +23,8 @@ namespace CORE_MVC_STOK.Models
         [Required(ErrorMessage = "Müşteri soyadı boş bırakılamaz !")]
         public string CustomerSurname { get; set; }
         public virtual ICollection<Sales> Sales { get; set; }
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

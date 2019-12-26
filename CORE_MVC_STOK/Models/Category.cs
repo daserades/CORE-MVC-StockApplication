@@ -14,6 +14,8 @@ namespace CORE_MVC_STOK.Models
         {
             Products = new HashSet<Product>();
         }
+
+
         [Key]
         [Display(Name ="Kategori ID")]
         public int CategoryId { get; set; }
@@ -21,5 +23,6 @@ namespace CORE_MVC_STOK.Models
         [Required(ErrorMessage ="Kategori Adı Boş bırakılamaz !")]
         public string CategoryName { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

@@ -13314,6 +13314,7 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13508,11 +13509,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sacak\\Source\\Repos\\CORE_MVC_STOK\\CORE_MVC_STOK\\CORE_MVC_STOK.csproj",
+      "projectUniqueName": "C:\\Users\\sacak\\Desktop\\Projects\\Repos\\CORE_MVC_STOK\\CORE_MVC_STOK\\CORE_MVC_STOK.csproj",
       "projectName": "CORE_MVC_STOK",
-      "projectPath": "C:\\Users\\sacak\\Source\\Repos\\CORE_MVC_STOK\\CORE_MVC_STOK\\CORE_MVC_STOK.csproj",
+      "projectPath": "C:\\Users\\sacak\\Desktop\\Projects\\Repos\\CORE_MVC_STOK\\CORE_MVC_STOK\\CORE_MVC_STOK.csproj",
       "packagesPath": "C:\\Users\\sacak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sacak\\Source\\Repos\\CORE_MVC_STOK\\CORE_MVC_STOK\\obj\\",
+      "outputPath": "C:\\Users\\sacak\\Desktop\\Projects\\Repos\\CORE_MVC_STOK\\CORE_MVC_STOK\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13554,6 +13555,7 @@
             "version": "[2.1.2, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
@@ -13572,10 +13574,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

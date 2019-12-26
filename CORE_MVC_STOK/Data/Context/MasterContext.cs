@@ -15,6 +15,8 @@ namespace CORE_MVC_STOK.Data.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Sales> Sales { get; set; }
+        //public DbSet<Amodel> Amodels { get; set; }
+        //public DbSet<Bmodel> Bmodels { get; set; }
 
         #endregion
 
@@ -23,7 +25,7 @@ namespace CORE_MVC_STOK.Data.Context
         //Dependency Injection yapısı gereği yapıcı metod oluşturduk.
         public MasterContext()
         {
-               
+
         }
 
         //Dependency Injection yapısı gereği yapıcı metod oluşturduk.
@@ -66,7 +68,12 @@ namespace CORE_MVC_STOK.Data.Context
                 .HasForeignKey(x => x.ProductId);
             });
 
-               
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.HasOne(d => d.Customer)
+                .WithOne(p => p.Category)
+                .HasForeignKey<Customer>(x => x.CategoryId);
+            });
         }
     }
 }

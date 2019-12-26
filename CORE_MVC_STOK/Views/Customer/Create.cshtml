@@ -9,16 +9,21 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-          
+
             <div class="form-group">
                 <label asp-for="CustomerName" class="control-label"></label>
-                <input asp-for="CustomerName" class="form-control" placeholder="Buraya Müşteri Adını yazınız"/>
+                <input asp-for="CustomerName" class="form-control" placeholder="Buraya Müşteri Adını yazınız" />
                 <span asp-validation-for="CustomerName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CustomerSurname" class="control-label"></label>
-                <input asp-for="CustomerSurname" class="form-control" placeholder="Buraya Müşteri Soyadını yazınız"/>
+                <input asp-for="CustomerSurname" class="form-control" placeholder="Buraya Müşteri Soyadını yazınız" />
                 <span asp-validation-for="CustomerSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                @Html.DropDownListFor(m => m.Category.CategoryId, (List<SelectListItem>)ViewBag.categoryList, new { @class = "form-control" })
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-info" />

@@ -32,7 +32,7 @@ namespace CORE_MVC_STOK.Controllers
         {
             using (UnitOfWork uow = new UnitOfWork(_masterContext))
             {
-                var categoryList = uow.GetRepository<Category>().GetAll().ToList();
+                var categoryList = uow.GetRepository<Category>().GetAll().ToList();            
                 return View(categoryList);
             }
         }

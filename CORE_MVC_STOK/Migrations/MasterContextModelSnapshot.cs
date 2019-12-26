@@ -33,11 +33,18 @@ namespace CORE_MVC_STOK.Migrations
                     b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CustomerName");
+                    b.Property<int>("CategoryId");
 
-                    b.Property<string>("CustomerSurname");
+                    b.Property<string>("CustomerName")
+                        .IsRequired();
+
+                    b.Property<string>("CustomerSurname")
+                        .IsRequired();
 
                     b.HasKey("CustomerId");
+
+                    b.HasIndex("CategoryId")
+                        .IsUnique();
 
                     b.ToTable("Customers");
                 });
@@ -49,9 +56,11 @@ namespace CORE_MVC_STOK.Migrations
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("ProductBrand");
+                    b.Property<string>("ProductBrand")
+                        .IsRequired();
 
-                    b.Property<string>("ProductName");
+                    b.Property<string>("ProductName")
+                        .IsRequired();
 
                     b.Property<decimal>("ProductPrice");
 
@@ -84,6 +93,14 @@ namespace CORE_MVC_STOK.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Sales");
+                });
+
+            modelBuilder.Entity("CORE_MVC_STOK.Models.Customer", b =>
+                {
+                    b.HasOne("CORE_MVC_STOK.Models.Category", "Category")
+                        .WithOne("Customer")
+                        .HasForeignKey("CORE_MVC_STOK.Models.Customer", "CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CORE_MVC_STOK.Models.Product", b =>

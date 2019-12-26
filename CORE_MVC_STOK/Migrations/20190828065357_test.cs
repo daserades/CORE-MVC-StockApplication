@@ -2,7 +2,7 @@
 
 namespace CORE_MVC_STOK.Migrations
 {
-    public partial class Initial : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,12 +25,19 @@ namespace CORE_MVC_STOK.Migrations
                 {
                     CustomerId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    CustomerName = table.Column<string>(nullable: true),
-                    CustomerSurname = table.Column<string>(nullable: true)
+                    CustomerName = table.Column<string>(nullable: false),
+                    CustomerSurname = table.Column<string>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customers", x => x.CustomerId);
+                    table.ForeignKey(
+                        name: "FK_Customers_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,8 +46,8 @@ namespace CORE_MVC_STOK.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    ProductName = table.Column<string>(nullable: true),
-                    ProductBrand = table.Column<string>(nullable: true),
+                    ProductName = table.Column<string>(nullable: false),
+                    ProductBrand = table.Column<string>(nullable: false),
                     ProductPrice = table.Column<decimal>(nullable: false),
                     ProductStock = table.Column<int>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
@@ -83,6 +90,12 @@ namespace CORE_MVC_STOK.Migrations
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Customers_CategoryId",
+                table: "Customers",
+                column: "CategoryId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",

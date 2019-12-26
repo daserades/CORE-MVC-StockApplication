@@ -43,10 +43,10 @@
                     @Html.DisplayFor(modelItem => item.CustomerSurname)
                 </td>
                 <td>
-                    @Html.ActionLink("Sil", "Delete", new { id = item.CustomerId }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor musunuz ?')" })
+                    @Html.ActionLink("", "Delete", new { id = item.CustomerId }, new { @class = "btn btn-danger glyphicon glyphicon-trash", onclick = "return confirm('Gerçekten Silmek İstiyor musunuz ?')" })
                 </td>
                 <td>
-                    <a href="/Customer/Update/@item.CustomerId" class="btn btn-success">Güncelle</a>
+                    <a href="/Customer/Update/@item.CustomerId" class="btn btn-success glyphicon glyphicon-cog"></a>
                 </td>
 
             </tr>

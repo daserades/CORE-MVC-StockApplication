@@ -31,8 +31,13 @@ namespace CORE_MVC_STOK
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var a = $"server={Environment.GetEnvironmentVariable("server")};database={Environment.GetEnvironmentVariable("database")};user={Environment.GetEnvironmentVariable("user")};password={Environment.GetEnvironmentVariable("password")}";
+
+
             //Bağlantıyı projeye ekleyen kod.Contextimiz ile veri tabanını bağlar.
-            services.AddDbContext<MasterContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MasterContext>(options => options.UseMySQL($"server={Environment.GetEnvironmentVariable("server")};database={Environment.GetEnvironmentVariable("database")};user={Environment.GetEnvironmentVariable("user")};password={Environment.GetEnvironmentVariable("password")}"));
+
+
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -64,13 +69,20 @@ namespace CORE_MVC_STOK
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                //Uygulamanın kullandığı DatabaseContext sınıfından bir örnek alıyoruz.
+                var context = serviceScope.ServiceProvider.GetRequiredService<MasterContext>();
+                //DbContext'i migrate ediyoruz.
+                context.Database.Migrate();
+            }
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
